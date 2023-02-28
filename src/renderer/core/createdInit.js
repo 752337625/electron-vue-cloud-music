@@ -5,9 +5,8 @@ import { remote, ipcRenderer } from "electron";
 const mm = require("music-metadata");
 const uuid = require("uuid/v1");
 const fs = require("fs");
-const path = require("path");
 
-function bufferToBase64(buffer) {
+export function bufferToBase64(buffer) {
   var binary = "";
   var bytes = new Uint8Array(buffer);
   for (var len = bytes.byteLength, i = 0; i < len; i++) {
@@ -17,6 +16,7 @@ function bufferToBase64(buffer) {
 }
 
 function getStat(path) {
+  // eslint-disable-next-line no-unused-vars
   return new Promise((resolve, reject) => {
     fs.stat(path, (err, stats) => {
       if (err) {
